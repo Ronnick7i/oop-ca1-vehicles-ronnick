@@ -20,7 +20,7 @@ public class VehicleManager {
 
     public void loadVehiclesFromFile(String fileName) {
         try {
-            Scanner sc = new Scanner(new File(fileName));
+          Scanner sc = new Scanner(new File(fileName));
 //           Delimiter: set the delimiter to be a comma character ","
 //                    or a carriage-return '\r', or a newline '\n'
             sc.useDelimiter("[,\r\n]+");
@@ -39,7 +39,14 @@ public class VehicleManager {
                 int mileage = sc.nextInt();
                 double latitude = sc.nextDouble();  // Depot GPS location
                 double longitude = sc.nextDouble();
-                int loadSpace = sc.nextInt();
+                double loadSpace = 0;
+                int NumOfSeats = 0;
+                if (type.equalsIgnoreCase("Van") ||
+                        type.equalsIgnoreCase("Truck")) {
+                    loadSpace = sc.nextDouble();
+                } else {
+                    NumOfSeats = sc.nextInt();
+                }
 
                 if (type.equalsIgnoreCase("Van") ||
                         type.equalsIgnoreCase("Truck")) {
@@ -49,15 +56,31 @@ public class VehicleManager {
                             year, month, day,
                             mileage, latitude, longitude,
                             loadSpace));
+                } else if (type.equalsIgnoreCase("Car")) {
+                    vehicleList.add(new Car(id, type, make, model, milesPerKwH, registration, costPerMile, year,
+                            month, day, mileage, latitude, longitude, NumOfSeats));
                 }
             }
             sc.close();
 
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             System.out.println("Exception thrown. " + e);
         }
+
     }
 
     //TODO add more functionality as per spec.
 
+    public Vehicle FindValueByRegNumber(String Reg) {
+        for (Vehicle v : vehicleList) {
+            if (v.getRegistration().equalsIgnoreCase(Reg)) {
+                return v;
+                //System.out.println(v);
+            }
+        }
+
+        return null;
+    }
 }
+

@@ -27,11 +27,30 @@ public class App
         PassengerStore passengerStore = new PassengerStore("passengers.txt");
         System.out.println("List of all passengers:");
         passengerStore.displayAllPassengers();
+        passengerStore.addPassenger("Iggy Pop","iggy@gmail.com","0838691644",34.3623,-23.2345);
+        passengerStore.addPassenger("Randy Door", "Randy@gmail.com", "0899674223", 34.2345, -15.2345);
+        passengerStore.displayAllPassengers();
+        String PassengerName = "Iggy Pop";
+
+        Passenger pa = passengerStore.FindPassengerByName(PassengerName);
+        if (pa != null){
+            System.out.println(pa + "This name is Found");
+        }else{
+            System.out.println("Name not found");
+        }
 
         VehicleManager vehicleManager = new VehicleManager("vehicles.txt");
         System.out.println("List of all Vehicles:");
         vehicleManager.displayAllVehicles();
-
+        String Reg="151D987105";
+        Vehicle v = vehicleManager.FindValueByRegNumber(Reg);
+        // vechicleManager.findvehicleByRegNumber(Reg);
+        if (v != null) {
+            System.out.println(v);
+        }else{
+            System.out.println("Vehicle not found");
+        }
         System.out.println("Program exiting... Goodbye");
     }
 }
+

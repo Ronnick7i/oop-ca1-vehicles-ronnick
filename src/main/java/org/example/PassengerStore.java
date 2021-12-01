@@ -25,10 +25,28 @@ public class PassengerStore {
         }
     }
 
+public Passenger FindPassengerByName(String PassengerName){
+        for (Passenger pa: passengerList){
+            if(pa.getName().equalsIgnoreCase(PassengerName)){
+                return pa;
+            }
+        }
+        return null;
+}
+
+
+
+
+
+
+
+
     /**
      * Read Passenger records from a text file and create and add Passenger
      * objects to the PassengerStore.
      */
+
+
     private void loadPassengerDataFromFile(String filename) {
 
         try {
@@ -56,5 +74,18 @@ public class PassengerStore {
     }
 
     // TODO - see functional spec for details of code to add
+    public void addPassenger(String name, String email, String phone, double latitude, double longitude){
+        Passenger passenger1 = new Passenger(name, email,phone, latitude, longitude);
+        boolean found = false;
+        for(Passenger p:passengerList){
+            if(p.equals(passenger1)){
+                found = true;
+                break; //it stops the for loop
+            }
+        }
+        if(found == false){
+            passengerList.add(passenger1);
+        }
+    }
 
 } // end class
