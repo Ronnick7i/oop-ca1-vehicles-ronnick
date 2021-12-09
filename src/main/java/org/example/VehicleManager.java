@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class VehicleManager {
+    Scanner kb = new Scanner(System.in);
     private final ArrayList<Vehicle> vehicleList;  // for Car and Van objects
 
     public VehicleManager(String fileName) {
@@ -13,8 +14,8 @@ public class VehicleManager {
         loadVehiclesFromFile(fileName);
     }
 
-    public void displayAllVehicles() {
-        for (Vehicle v : vehicleList)
+    public void displayAllVehicles(ArrayList<Vehicle> vehicleList) {
+        for (Vehicle v : this.vehicleList)
             System.out.println(v.toString());
     }
 
@@ -76,6 +77,25 @@ public class VehicleManager {
         for (Vehicle v : vehicleList) {
             if (v.getRegistration().equalsIgnoreCase(Reg)) {
                 return v;
+
+
+                //System.out.println(v);
+            }
+        }
+
+        return null;
+    }
+    public void allVehicles()
+    {
+        displayAllVehicles(vehicleList);
+    }
+
+    public Vehicle findVehicleByID(int vehicleId) {
+        for (Vehicle ve : vehicleList) {
+            if (ve.getId() == (vehicleId)) {
+                return ve;
+
+
                 //System.out.println(v);
             }
         }

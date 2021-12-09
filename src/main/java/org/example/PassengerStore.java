@@ -19,7 +19,7 @@ public class PassengerStore {
         return this.passengerList;
     }
 
-    public void displayAllPassengers() {
+    public void displayAllPassengers(ArrayList<Passenger> passengerList) {
         for (Passenger p : this.passengerList) {
             System.out.println(p.toString());
         }
@@ -33,10 +33,15 @@ public Passenger FindPassengerByName(String PassengerName){
         }
         return null;
 }
+public Passenger findPassengerByID(int passengerId){
+    for (Passenger ps: passengerList){
+        if(ps.getId() == (passengerId)){
+            return ps;
+        }
+    }
+    return null;
 
-
-
-
+}
 
 
 
@@ -87,5 +92,11 @@ public Passenger FindPassengerByName(String PassengerName){
             passengerList.add(passenger1);
         }
     }
+
+    public void allPassengers()
+    {
+        displayAllPassengers(passengerList);
+    }
+
 
 } // end class
