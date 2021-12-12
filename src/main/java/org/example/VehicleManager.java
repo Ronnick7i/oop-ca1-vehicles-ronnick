@@ -79,7 +79,7 @@ public class VehicleManager {
                 return v;
 
 
-                //System.out.println(v);
+
             }
         }
 
@@ -96,7 +96,7 @@ public class VehicleManager {
                 return ve;
 
 
-                //System.out.println(v);
+
             }
         }
 

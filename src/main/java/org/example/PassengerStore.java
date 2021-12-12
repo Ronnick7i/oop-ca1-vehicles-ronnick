@@ -19,7 +19,7 @@ public class PassengerStore {
         return this.passengerList;
     }
 
-    public void displayAllPassengers(ArrayList<Passenger> passengerList) {
+    public void displayAllPassengers() {
         for (Passenger p : this.passengerList) {
             System.out.println(p.toString());
         }
@@ -56,8 +56,7 @@ public Passenger findPassengerByID(int passengerId){
 
         try {
             Scanner sc = new Scanner(new File(filename));
-//           Delimiter: set the delimiter to be a comma character ","
-//                    or a carriage-return '\r', or a newline '\n'
+
             sc.useDelimiter("[,\r\n]+");
 
             while (sc.hasNext()) {
@@ -68,7 +67,7 @@ public Passenger findPassengerByID(int passengerId){
                 double latitude = sc.nextDouble();
                 double longitude = sc.nextDouble();
 
-                // construct a Passenger object and add it to the passenger list
+
                 passengerList.add(new Passenger(id, name, email, phone, latitude, longitude));
             }
             sc.close();
@@ -85,7 +84,7 @@ public Passenger findPassengerByID(int passengerId){
         for(Passenger p:passengerList){
             if(p.equals(passenger1)){
                 found = true;
-                break; //it stops the for loop
+                break;
             }
         }
         if(found == false){
@@ -93,10 +92,8 @@ public Passenger findPassengerByID(int passengerId){
         }
     }
 
-    public void allPassengers()
-    {
-        displayAllPassengers(passengerList);
-    }
 
 
-} // end class
+
+
+}
